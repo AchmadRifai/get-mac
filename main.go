@@ -15,7 +15,9 @@ func GetMacAddr() []NetworkInterface {
 	if err != nil {
 		panic(err)
 	}
-	return arrayutils.Map(arrayutils.Filter(ifas, func(ifa net.Interface, i int) bool { return ifa.HardwareAddr.String() != "" }), interfaceToNetworkInterface)
+	return arrayutils.Map(arrayutils.Filter(ifas, func(ifa net.Interface, i int) bool {
+		return ifa.HardwareAddr.String() != ""
+	}), interfaceToNetworkInterface)
 }
 
 func interfaceToNetworkInterface(ifa net.Interface, i int) NetworkInterface {
